@@ -4,12 +4,12 @@ const GridItem = (item: Business) => {
   return (
     <>
       <div className="property-card">
+        <div className="property-go">
+          <a href="*"> {item.name}</a>
+        </div>
         <a href="#">
           <div className="property-image">
-            <div className="property-image-title">
-              <h5> {item.name} </h5>
-              If you want it, turn on the CSS also.
-            </div>
+            <div className="property-image-title"></div>
           </div>
         </a>
         <div className="property-description">
@@ -67,12 +67,22 @@ const GridItem = (item: Business) => {
 
           /* Top Half of card, image. */
 
+          .property-go {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 4em;
+            text-align: center;
+            padding: 0.5em 1em;
+          }
+
           .property-image {
             height: 6em;
             width: 14em;
             padding: 1em 2em;
             position: Absolute;
-            top: 0px;
+            top: 0;
             -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -118,6 +128,7 @@ const GridItem = (item: Business) => {
             padding: 0px 1em;
           }
           .property-card:hover .property-image {
+            top: 4em;
             height: 18em;
             width: 14em;
             background-size: cover;
