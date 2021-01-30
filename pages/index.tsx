@@ -19,6 +19,7 @@ const ALL_POSTS_QUERY = gql`
         id
         name
         photos
+        phone
         rating
         review_count
         location {
@@ -27,6 +28,7 @@ const ALL_POSTS_QUERY = gql`
           city
           state
           country
+          formatted_address
         }
       }
     }

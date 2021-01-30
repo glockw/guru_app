@@ -1,11 +1,15 @@
 import { Business } from "../../models";
+import Review from "./Review";
 
 const GridItem = (item: Business) => {
+  const {
+    location: { formatted_address },
+  } = item;
   return (
     <>
       <div className="property-card">
         <div className="property-go">
-          <a href="*"> {item.name}</a>
+          <a href="#"> {item.name}</a>
         </div>
         <a href="#">
           <div className="property-image">
@@ -14,14 +18,10 @@ const GridItem = (item: Business) => {
         </a>
         <div className="property-description">
           <h5> {item.name} </h5>
-          <p>
-            Lorem Ipsum Dipsum hortata. Mixcall Horcho. Mixwell Chingo. More
-            Bingo. Lorem Ipum doth be hard.
-          </p>
+          <Review {...item} show_count={true} />
+          <span> {item.phone}</span>
+          <span className="address">{formatted_address}</span>
         </div>
-        <a href="#">
-          <div className="property-social-icons"></div>
-        </a>
       </div>
 
       <style jsx>
@@ -31,9 +31,14 @@ const GridItem = (item: Business) => {
             box-sizing: border-box;
           }
 
+          .address {
+            font-size: 0.8em;
+          }
+
           h5 {
             margin: 0px;
-            font-size: 1.4em;
+            padding-bottom: 0px;
+            font-size: 1.2em;
             font-weight: 700;
           }
 
@@ -105,6 +110,9 @@ const GridItem = (item: Business) => {
             transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             padding: 0.5em 1em;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
           }
 
           /* Social Icons */

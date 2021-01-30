@@ -3,6 +3,7 @@ export class Business {
   name: string;
   photos: string[];
   rating: number;
+  phone: string;
   review_count: number;
   location: Address;
 }
@@ -11,4 +12,5 @@ export class Address {
   address1: string;
   city: string;
   state: string;
+  formatted_address: string;
 }
