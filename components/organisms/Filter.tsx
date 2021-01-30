@@ -8,20 +8,16 @@ export default function Filter() {
 
   return (
     <>
-      <div className="nav">
+      <div className="filter">
         <InputWide hook={search} placeholder={"Find"} />
         <InputWide hook={location} placeholder={"Near"} />
-
         <SearchButton />
       </div>
-      <style jsx>
-        {`
-          .nav {
-            display: flex;
-            justify-content: center;
-          }
-        `}
-      </style>
+      <style jsx>{`
+        .searchButton {
+          width: 20em;
+        }
+      `}</style>
     </>
   );
 }

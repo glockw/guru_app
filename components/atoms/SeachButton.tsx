@@ -1,16 +1,19 @@
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const SearchButton = () => {
   return (
     <>
       <button>
-        <span>
-          Search
-          <img src="img/search.png" />
+        <span className="button-text">
+          Search <FontAwesomeIcon icon={faSearch} />
         </span>
       </button>
+
       <style jsx>
         {`
-          img {
-            height: 2em;
+          .button-text {
+            font-weight: 500;
           }
         `}
       </style>

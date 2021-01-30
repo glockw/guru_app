@@ -2,6 +2,7 @@ import { gql, NetworkStatus, useQuery } from "@apollo/client";
 import { useDispatch } from "react-redux";
 import ErrorMessage from "../components/ErrorMessage";
 import Layout from "../components/Layout";
+import Nav from "../components/Nav";
 import Businesses from "../components/organisms/Businesses";
 import { initializeApollo } from "../lib/apollo";
 import useInterval from "../lib/useInterval";
@@ -75,6 +76,7 @@ const IndexPage = () => {
   const { business }: { business: Business[] } = data.search;
   return (
     <Layout>
+      <Nav />
       <Businesses data={business} />
     </Layout>
   );

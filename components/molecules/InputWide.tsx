@@ -5,7 +5,6 @@ const InputWide = ({ hook, placeholder }) => {
     <>
       <div className="wide">
         <span className="pholder">{placeholder}</span>
-
         <Input hook={hook} noBorder />
       </div>
 
@@ -23,11 +22,13 @@ const InputWide = ({ hook, placeholder }) => {
           margin-left: 0.3em;
         }
 
-        .noBorder {
-          border: none;
-          outline: none;
+        @media (max-width: 800px) {
+          .wide {
+            width: 80vw;
+          }
         }
-        input {
+
+        .noBorder {
           border: none;
           outline: none;
         }

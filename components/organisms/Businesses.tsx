@@ -12,6 +12,7 @@ const Businesses = ({ data }: { data: Business[] }) => {
           .flex-items {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
           }
 
           @media (max-width: 600px) {
