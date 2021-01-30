@@ -1,25 +1,22 @@
-import { gql, useQuery, NetworkStatus } from '@apollo/client'
-import ErrorMessage from './ErrorMessage'
-import PostUpvoter from './PostUpvoter'
+import { gql, NetworkStatus, useQuery } from "@apollo/client";
+import ErrorMessage from "./ErrorMessage";
+import PostUpvoter from "./PostUpvoter";
 
 export const ALL_POSTS_QUERY = gql`
-  query allPosts($first: Int!, $skip: Int!) {
-    allPosts(orderBy: { createdAt: desc }, first: $first, skip: $skip) {
+  {
+    business(id: "garaje-san-francisco") {
+      name
       id
-      title
-      votes
+      alias
+      rating
       url
-      createdAt
-    }
-    _allPostsMeta {
-      count
     }
   }
-`
+`;
 export const allPostsQueryVars = {
   skip: 0,
   first: 10,
-}
+};
 
 export default function PostList() {
   const { loading, error, data, fetchMore, networkStatus } = useQuery(
@@ -31,23 +28,24 @@ export default function PostList() {
       // more data
       notifyOnNetworkStatusChange: true,
     }
-  )
+  );
 
-  const loadingMorePosts = networkStatus === NetworkStatus.fetchMore
+  console.log(error);
+  const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
   const loadMorePosts = () => {
     fetchMore({
       variables: {
         skip: allPosts.length,
       },
-    })
-  }
+    });
+  };
 
-  if (error) return <ErrorMessage message="Error loading posts." />
-  if (loading && !loadingMorePosts) return <div>Loading</div>
+  if (error) return <ErrorMessage message={"Error loading posts."} />;
+  if (loading && !loadingMorePosts) return <div>Loading</div>;
 
-  const { allPosts, _allPostsMeta } = data
-  const areMorePosts = allPosts.length < _allPostsMeta.count
+  const { allPosts, _allPostsMeta } = data;
+  const areMorePosts = allPosts.length < _allPostsMeta.count;
 
   return (
     <section>
@@ -64,7 +62,7 @@ export default function PostList() {
       </ul>
       {areMorePosts && (
         <button onClick={() => loadMorePosts()} disabled={loadingMorePosts}>
-          {loadingMorePosts ? 'Loading...' : 'Show More'}
+          {loadingMorePosts ? "Loading..." : "Show More"}
         </button>
       )}
       <style jsx>{`
@@ -99,12 +97,12 @@ export default function PostList() {
           border-style: solid;
           border-width: 6px 4px 0 4px;
           border-color: #ffffff transparent transparent transparent;
-          content: '';
+          content: "";
           height: 0;
           margin-right: 5px;
           width: 0;
         }
       `}</style>
     </section>
-  )
+  );
 }
