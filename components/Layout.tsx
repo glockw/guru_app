@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
+import Filter from "./organisms/Filter";
 
 const Layout = ({ children }) => (
   <>
     <main>
+      <Filter />
       {children}
 
       <style jsx>
