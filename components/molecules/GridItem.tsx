@@ -1,15 +1,15 @@
 import { Business } from "../../models";
-import Review from "./Review";
+import DescriptionDetail from "./DescriptionDetail";
 
 const GridItem = (item: Business) => {
-  const {
-    location: { formatted_address },
-  } = item;
   return (
     <>
       <div className="property-card">
         <div className="property-go">
-          <a href="#"> {item.name}</a>
+          <a className="go-to" href="#">
+            {" "}
+            {item.name}
+          </a>
         </div>
         <a href="#">
           <div className="property-image">
@@ -17,10 +17,7 @@ const GridItem = (item: Business) => {
           </div>
         </a>
         <div className="property-description">
-          <h5> {item.name} </h5>
-          <Review {...item} show_count={true} />
-          <span> {item.phone}</span>
-          <span className="address">{formatted_address}</span>
+          <DescriptionDetail item={item} />
         </div>
       </div>
 
@@ -29,10 +26,6 @@ const GridItem = (item: Business) => {
           * {
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
-          }
-
-          .address {
-            font-size: 0.8em;
           }
 
           h5 {
@@ -46,6 +39,11 @@ const GridItem = (item: Business) => {
             font-size: 12px;
           }
 
+          .go-to {
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+          }
           /* End Non-Essential  */
 
           .property-card {
