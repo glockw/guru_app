@@ -10,9 +10,7 @@ const InputWide = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          position: relative;
-          margin: 0 auto;
-          width: 575px;
+
           border-radius: 30px;
           border: 1px solid #dcdcdc;
         }
@@ -32,6 +30,7 @@ const InputWide = () => {
           left: 10px;
         }
         img {
+          padding: 10px;
           cursor: pointer;
           position: absolute;
           height: 40px;
