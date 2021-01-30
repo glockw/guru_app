@@ -1,14 +1,14 @@
-import Nav from './Nav'
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
+import Filter from "./organisms/Filter";
 
 const Layout = ({ children }) => (
   <main>
-    <Nav />
+    <Filter />
     {children}
     <style jsx global>{`
       * {
-        font-family: Menlo, Monaco, 'Lucida Console', 'Liberation Mono',
-          'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New',
+        font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono",
+          "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New",
           monospace, serif;
       }
       body {
@@ -51,10 +51,10 @@ const Layout = ({ children }) => (
       }
     `}</style>
   </main>
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
