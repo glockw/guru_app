@@ -1,10 +1,10 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SearchButton = () => {
+const SearchButton = ({ onSearch = (f) => f }) => {
   return (
     <>
-      <button>
+      <button onClick={onSearch}>
         <span className="button-text">
           Search <FontAwesomeIcon icon={faSearch} />
         </span>

@@ -1,78 +1,39 @@
-import { gql, useQuery } from "@apollo/client";
+import Link from "next/link";
+import { useState } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
 import Businesses from "../components/organisms/Businesses";
-import { initializeApollo } from "../lib/apollo";
-import { Business } from "../models";
-const allPostsQueryVars = {
-  term: "taco",
-  location: "nyc",
-};
-const ALL_POSTS_QUERY = gql`
-  query Search($term: String!, $location: String!) {
-    search(term: $term, location: $location, limit: 10) {
-      total
-      business {
-        id
-        name
-        photos
-        phone
-        rating
-        review_count
-        location {
-          address1
-          address2
-          city
-          state
-          country
-          formatted_address
-        }
-      }
-    }
-  }
-`;
-const IndexPage = () => {
-  // Tick the time every second
+import { getBusiness } from "../lib/api";
 
-  const { loading, data, error } = useQuery(ALL_POSTS_QUERY, {
-    variables: allPostsQueryVars,
-    notifyOnNetworkStatusChange: true,
-  });
-  // const { loading, data, fetchMore, error, networkStatus } = useQuery(
-  //   ALL_POSTS_QUERY,
-  //   {
-  //     variables: allPostsQueryVars,
-  //     // Setting this value to true will make the component rerender when
-  //     // the "networkStatus" changes, so we are able to know if it is fetching
-  //     // more data
-  //     notifyOnNetworkStatusChange: true,
-  //   }
-  // );
+const IndexPage = ({
+  data: {
+    search: { business },
+  },
+}) => {
+  const [bus, setBus] = useState(business);
 
-  // if (error) return <ErrorMessage message={"Error loading posts."} />;
-  if (loading) return <div>Loading</div>;
-
-  const { business }: { business: Business[] } =
-    data && data.search ? data.search : [];
+  const onSearch = async (term, location) => {
+    const {
+      search: { business },
+    } = await getBusiness(term, location);
+    setBus(business);
+  };
   return (
     <Layout>
-      <Nav />
-      <Businesses data={business} />
+      <Nav onSearch={onSearch} />
+      <Link href="/bus/[id]" as="/bus/world">
+        <a>Hello world</a>
+      </Link>
+      <Businesses data={bus} />
     </Layout>
   );
 };
 
 export async function getStaticProps() {
-  const apolloClient = initializeApollo();
-
-  await apolloClient.query({
-    query: ALL_POSTS_QUERY,
-    variables: allPostsQueryVars,
-  });
-
+  const data = await getBusiness("pizza", "nyc");
   return {
     props: {
-      initialApolloState: apolloClient.cache.extract(),
+      data,
     },
     revalidate: 1,
   };

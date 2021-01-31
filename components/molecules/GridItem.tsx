@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Business } from "../../models";
 import DescriptionDetail from "./DescriptionDetail";
 
@@ -6,10 +7,17 @@ const GridItem = (item: Business) => {
     <>
       <div className="property-card">
         <div className="property-go">
-          <a className="go-to" href="#">
-            {" "}
-            {item.name}
-          </a>
+          <Link
+            href={{
+              pathname: "/business/[id]",
+              query: { id: item.name },
+            }}
+          >
+            <a className="go-to" href="#">
+              {" "}
+              {item.name}
+            </a>
+          </Link>
         </div>
         <a href="#">
           <div className="property-image">
