@@ -13,11 +13,6 @@ export default function Filter() {
         <InputWide hook={location} placeholder={"Near"} />
         <SearchButton />
       </div>
-      <style jsx>{`
-        .searchButton {
-          width: 20em;
-        }
-      `}</style>
     </>
   );
 }

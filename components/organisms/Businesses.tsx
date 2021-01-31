@@ -10,6 +10,8 @@ const Businesses = ({ data }: { data: Business[] }) => {
       <style jsx>
         {`
           .flex-items {
+            position: relative;
+            top: 5em;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;

@@ -26,8 +26,10 @@ const Layout = ({ children }) => (
           top: 0;
           background-color: white;
           display: flex;
+          padding-top: 2em;
           width: 90vw;
           justify-content: center;
+          align-items: center;
         }
         main {
           width: 90vw;

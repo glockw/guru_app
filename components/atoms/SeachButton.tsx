@@ -12,6 +12,9 @@ const SearchButton = () => {
 
       <style jsx>
         {`
+          button {
+            text-align: center;
+          }
           .button-text {
             font-weight: 500;
           }
