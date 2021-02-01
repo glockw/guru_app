@@ -30,7 +30,6 @@ export default function PostList() {
     }
   );
 
-  console.log(error);
   const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
   const loadMorePosts = () => {

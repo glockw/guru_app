@@ -1,29 +1,45 @@
+import Link from "next/link";
 import PropTypes from "prop-types";
 
-const Layout = ({ children }) => (
+const Layout = ({ children, notHome = false }) => (
   <>
     <main>
+      {notHome && (
+        <Link href="/">
+          <a>go home</a>
+        </Link>
+      )}
       {children}
 
-      <style jsx>
-        {`
-          section {
-            position: relative;
-          }
-        `}
-      </style>
       <style jsx global>{`
         * {
           font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono",
             "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New",
             monospace, serif;
         }
-        main {
-          width: inherit;
-        }
+
         body {
           margin: 0;
-          padding: 25px 50px;
+          padding: 0;
+        }
+        .filter {
+          display: flex;
+          flex-direction: row;
+        }
+        header {
+          position: fixed;
+          z-index: 10;
+          top: 0;
+          background-color: white;
+          display: flex;
+          padding-top: 2em;
+          width: 90vw;
+          justify-content: center;
+          align-items: center;
+        }
+        main {
+          width: 90vw;
+          margin: 0 auto;
         }
         a {
           color: #22bad9;
@@ -58,6 +74,14 @@ const Layout = ({ children }) => (
           border: none;
           background: #ececec;
           margin: 20px 0;
+        }
+
+        @media (max-width: 800px) {
+          .filter {
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+          }
         }
       `}</style>
     </main>

@@ -1,27 +1,32 @@
+import Link from "next/link";
 import { Business } from "../../models";
+import DescriptionDetail from "./DescriptionDetail";
 
 const GridItem = (item: Business) => {
   return (
     <>
       <div className="property-card">
         <div className="property-go">
-          <a href="*"> {item.name}</a>
+          <Link
+            href={{
+              pathname: "/business/[id]",
+              query: { id: item.id },
+            }}
+          >
+            <a className="go-to" href="#">
+              {" "}
+              {item.name}
+            </a>
+          </Link>
         </div>
-        <a href="#">
-          <div className="property-image">
-            <div className="property-image-title"></div>
-          </div>
-        </a>
+
+        <div className="property-image">
+          <div className="property-image-title"></div>
+        </div>
+
         <div className="property-description">
-          <h5> {item.name} </h5>
-          <p>
-            Lorem Ipsum Dipsum hortata. Mixcall Horcho. Mixwell Chingo. More
-            Bingo. Lorem Ipum doth be hard.
-          </p>
+          <DescriptionDetail item={item} />
         </div>
-        <a href="#">
-          <div className="property-social-icons"></div>
-        </a>
       </div>
 
       <style jsx>
@@ -33,7 +38,8 @@ const GridItem = (item: Business) => {
 
           h5 {
             margin: 0px;
-            font-size: 1.4em;
+            padding-bottom: 0px;
+            font-size: 1.2em;
             font-weight: 700;
           }
 
@@ -41,6 +47,11 @@ const GridItem = (item: Business) => {
             font-size: 12px;
           }
 
+          .go-to {
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+          }
           /* End Non-Essential  */
 
           .property-card {
@@ -105,6 +116,9 @@ const GridItem = (item: Business) => {
             transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             padding: 0.5em 1em;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
           }
 
           /* Social Icons */

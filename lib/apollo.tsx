@@ -3,14 +3,15 @@ import { setContext } from "@apollo/client/link/context";
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 import { useMemo } from "react";
-
 let apolloClient;
 
 function createApolloClient() {
   const token = process.env.NEXT_PUBLIC_ANALYTICS_ID;
   const httpLink = createHttpLink({
     uri: "https://api.yelp.com/v3/graphql",
+    credentials: "include",
   });
+
   const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
     // return the headers to the context so httpLink can read them
