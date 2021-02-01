@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useState } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
@@ -21,9 +20,7 @@ const IndexPage = ({
   return (
     <Layout>
       <Nav onSearch={onSearch} />
-      <Link href="/bus/[id]" as="/bus/world">
-        <a>Hello world</a>
-      </Link>
+      
       <Businesses data={bus} />
     </Layout>
   );
