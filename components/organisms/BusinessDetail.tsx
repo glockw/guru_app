@@ -1,6 +1,5 @@
-import _ from "lodash";
 import moment from "moment";
-import { BussinesExtended, Hours, MapDate } from "../../models";
+import { BussinesExtended } from "../../models";
 import ImageHolder from "../atoms/ImageHolder";
 import DescriptionDetail from "../molecules/DescriptionDetail";
 import Reviewer from "./Reviewer";
@@ -11,14 +10,6 @@ export default function BusinessDetail({ item }: { item: BussinesExtended }) {
 
   const { hours } = item;
 
-  const current_date = hours.find((c) => c.current);
-  const days = _.groupBy(hours, (h) => h.day);
-
-  const c = Object.entries(days).map(([day, h]) => ({
-    day: MapDate[day],
-    hours: h as Hours[],
-    current: current_date.day == +day,
-  }));
   const currentTime = +moment(Date.now()).format("hhmm");
 
   const isOpen = hours.some(
@@ -31,12 +22,13 @@ export default function BusinessDetail({ item }: { item: BussinesExtended }) {
       <div className="container-detail">
         <div className="card-min left">
           <div className={isOpen && "today"}>{isOpen ? "OPEN" : "CLOSED"}</div>
-          <Schedule schedule={c} />
+          <Schedule schedule={hours} />
         </div>
         <div className="card">
           <DescriptionDetail item={item} />
-          <ImageHolder {...{ src, atl }} />
+          <span className="today"> {item.price}</span>
           {item.is_closed && <span> Is Closed </span>}
+          <ImageHolder {...{ src, atl }} />
         </div>
 
         <div className="right">
@@ -76,6 +68,7 @@ export default function BusinessDetail({ item }: { item: BussinesExtended }) {
           .today {
             color: green;
             font-weigth: bold;
+            font-size: 1em;
           }
 
           .some {
@@ -180,8 +173,10 @@ export default function BusinessDetail({ item }: { item: BussinesExtended }) {
 
             .card {
               max-width: 20em;
+              margin: 1em 0;
             }
-            .right {
+            .right,
+            .left {
               margin: 0;
             }
           }
