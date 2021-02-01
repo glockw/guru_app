@@ -39,9 +39,28 @@ export default function Reviewer({ review }: { review: Review }) {
           }
           .review {
             display: flex;
-            height: 10em;
 
-            flex-direction: flex-start;
+            flex-direction: row;
+          }
+
+          @media (max-width: 1400px) {
+            .img-width {
+              paddding-top: 1em;
+              width: 30%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+            .review {
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            }
+            .body {
+              align-items: center;
+              justify-content: center;
+            }
           }
           img {
             width: 6em;
