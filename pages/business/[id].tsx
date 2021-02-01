@@ -5,19 +5,9 @@ import { getBusiness } from "../../lib/api";
 export default function Business({ business }) {
   return (
     <Layout notHome>
-      <div className="container">
-        <BusinessDetail item={business} />
-      </div>
-      <style jsx>
-        {`
-          .container {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        `}
-      </style>
+      <BusinessDetail item={business} />
+
+      <style jsx>{``}</style>
     </Layout>
   );
 }

@@ -1,13 +1,13 @@
 import StarsRatings from "../atoms/StarsRating";
 
 const Review = ({ rating, review_count, show_count }) => {
-  const star = <StarsRatings rating={rating} review_count={review_count} />;
+  const star = <StarsRatings rating={rating} />;
   return (
     <>
       {show_count && (
         <div className="block">
           {star}
-          <span className="count"> {review_count}</span>
+          <span className="count"> {review_count} reviews </span>
         </div>
       )}
 
@@ -16,8 +16,7 @@ const Review = ({ rating, review_count, show_count }) => {
       <style jsx>
         {`
           .block {
-            display: flex;
-            align-items: center;
+            padding: 0.1em;
           }
           .count {
             position: relative;

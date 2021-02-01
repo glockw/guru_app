@@ -10,7 +10,7 @@ export default function ImageHolder({ src, atl }) {
         {`
           img {
             width: 100%;
-            height: 20em;
+            height: 15em;
             object-fit: cover;
           }
         `}
