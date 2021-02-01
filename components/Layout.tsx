@@ -19,6 +19,7 @@ const Layout = ({ children, notHome = false }) => {
             </div>
           </footer>
         )}
+
         <style jsx global>{`
           * {
             font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono",
