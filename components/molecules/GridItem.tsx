@@ -10,7 +10,7 @@ const GridItem = (item: Business) => {
           <Link
             href={{
               pathname: "/business/[id]",
-              query: { id: item.name },
+              query: { id: item.id },
             }}
           >
             <a className="go-to" href="#">
@@ -19,11 +19,11 @@ const GridItem = (item: Business) => {
             </a>
           </Link>
         </div>
-        <a href="#">
-          <div className="property-image">
-            <div className="property-image-title"></div>
-          </div>
-        </a>
+
+        <div className="property-image">
+          <div className="property-image-title"></div>
+        </div>
+
         <div className="property-description">
           <DescriptionDetail item={item} />
         </div>

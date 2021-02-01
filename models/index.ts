@@ -4,6 +4,7 @@ export class Business {
   photos: string[];
   rating: number;
   phone: string;
+  display_phone: string;
   review_count: number;
   location: Address;
 }

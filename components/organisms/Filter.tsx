@@ -11,7 +11,6 @@ export default function Filter({ onSearch }) {
   );
 
   const doSearch = () => {
-    debugger;
     onSearch(what, near);
   };
 

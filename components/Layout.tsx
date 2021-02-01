@@ -1,8 +1,14 @@
+import Link from "next/link";
 import PropTypes from "prop-types";
 
-const Layout = ({ children }) => (
+const Layout = ({ children, notHome = false }) => (
   <>
     <main>
+      {notHome && (
+        <Link href="/">
+          <a>go home</a>
+        </Link>
+      )}
       {children}
 
       <style jsx global>{`

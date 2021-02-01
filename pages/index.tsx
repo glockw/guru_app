@@ -3,7 +3,7 @@ import { useState } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
 import Businesses from "../components/organisms/Businesses";
-import { getBusiness } from "../lib/api";
+import { getBusinesses } from "../lib/api";
 
 const IndexPage = ({
   data: {
@@ -15,7 +15,7 @@ const IndexPage = ({
   const onSearch = async (term, location) => {
     const {
       search: { business },
-    } = await getBusiness(term, location);
+    } = await getBusinesses(term, location);
     setBus(business);
   };
   return (
@@ -30,7 +30,7 @@ const IndexPage = ({
 };
 
 export async function getStaticProps() {
-  const data = await getBusiness("pizza", "nyc");
+  const data = await getBusinesses("pizza", "nyc");
   return {
     props: {
       data,
