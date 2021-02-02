@@ -3,6 +3,10 @@ import { Hours, MapDate } from "../../models";
 export default function Schedule({ schedule }) {
   const current_date = schedule.find((c) => c.current);
   const days = _.groupBy(schedule, (h) => h.day);
+  const { is_overnight } = current_date;
+
+  const mapHours = (start, end) =>
+    is_overnight ? `${end} - ${start}` : `${start} - ${end}`;
 
   const flatted = Object.entries(days).map(([day, h]) => ({
     day: MapDate[day],
@@ -18,9 +22,7 @@ export default function Schedule({ schedule }) {
 
             <ul>
               {hours.map(({ start, end }, index) => (
-                <li key={`h__${index}`}>
-                  {start} - {end}
-                </li>
+                <li key={`h__${index}`}>{mapHours(start, end)}</li>
               ))}
             </ul>
           </div>
