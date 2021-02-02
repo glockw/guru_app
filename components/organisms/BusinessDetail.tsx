@@ -1,10 +1,23 @@
 import moment from "moment";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BussinesExtended } from "../../models";
+import { BUSINESS_VISITED } from "../../redux/actions";
 import ImageHolder from "../atoms/ImageHolder";
 import DescriptionDetail from "../molecules/DescriptionDetail";
 import Reviewer from "./Reviewer";
 import Schedule from "./Schedule";
 export default function BusinessDetail({ item }: { item: BussinesExtended }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: BUSINESS_VISITED,
+      payload: {
+        id: item.id,
+      },
+    });
+  }, []);
   const src = item.photos[0];
   const atl = item.name;
 

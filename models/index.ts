@@ -7,6 +7,7 @@ export class Business {
   display_phone: string;
   review_count: number;
   location: Address;
+  visited: boolean;
 }
 
 export class BussinesExtended extends Business {

@@ -13,9 +13,7 @@ const GridItem = (item: Business) => {
               query: { id: item.id },
             }}
           >
-            <a className="go-to" href="#">
-              {item.name}
-            </a>
+            <a className="go-to">{item.name}</a>
           </Link>
         </div>
 
@@ -24,6 +22,8 @@ const GridItem = (item: Business) => {
         </div>
 
         <div className="property-description">
+          {item.visited && <span className="visited"> 👁️</span>}
+
           <DescriptionDetail item={item} />
         </div>
       </div>

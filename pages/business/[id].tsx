@@ -1,8 +1,11 @@
+import { useDispatch } from "react-redux";
 import Layout from "../../components/Layout";
 import BusinessDetail from "../../components/organisms/BusinessDetail";
 import { getBusiness } from "../../lib/api";
+import { BUSINESS_VISITED } from "../../redux/actions";
 
 export default function Business({ business }) {
+
   return (
     <Layout notHome>
       <div>
