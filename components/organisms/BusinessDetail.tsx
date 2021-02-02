@@ -10,12 +10,24 @@ export default function BusinessDetail({ item }: { item: BussinesExtended }) {
 
   const { hours } = item;
 
-  const currentTime = +moment(Date.now()).format("hhmm");
-
-  const isOpen = hours.some(
-    (h) =>
-      h.current && h.start_number <= currentTime && h.end_number > currentTime
-  );
+  const currentTime = +moment(Date.now()).format("HHmm");
+  let isOpen = false;
+  const is_night = hours.find((c) => c.is_overnight && c.current);
+  if (is_night) {
+    isOpen = hours.some(
+      (h) =>
+        h.current &&
+        +h.start_number >= currentTime &&
+        +h.end_number <= currentTime
+    );
+  } else {
+    isOpen = hours.some(
+      (h) =>
+        h.current &&
+        +h.start_number <= currentTime &&
+        +h.end_number > currentTime
+    );
+  }
 
   return (
     <>

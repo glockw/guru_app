@@ -5,7 +5,6 @@ import Filter from "./organisms/Filter";
 const Nav = () => {
   const dispatch = useDispatch();
   const { total, offset } = useSelector((data) => data);
-  debugger;
   const moreResults = () => {
     dispatch(fetch_more);
   };

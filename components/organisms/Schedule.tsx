@@ -7,7 +7,7 @@ export default function Schedule({ schedule }) {
   const flatted = Object.entries(days).map(([day, h]) => ({
     day: MapDate[day],
     hours: h as Hours[],
-    current: current_date.day == +day,
+    current: current_date && current_date.day == +day,
   }));
   return (
     <>
