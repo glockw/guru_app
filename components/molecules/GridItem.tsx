@@ -14,7 +14,6 @@ const GridItem = (item: Business) => {
             }}
           >
             <a className="go-to" href="#">
-              {" "}
               {item.name}
             </a>
           </Link>

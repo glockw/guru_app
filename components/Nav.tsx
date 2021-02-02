@@ -1,9 +1,12 @@
+
 import Filter from "./organisms/Filter";
 
-export default function Nav({ onSearch }) {
+const Nav = () => {
+ 
+
   return (
     <header>
-      <Filter onSearch={onSearch} />
+      <Filter />
       <div></div>
       <style jsx>{`
         header {
@@ -13,4 +16,6 @@ export default function Nav({ onSearch }) {
       `}</style>
     </header>
   );
-}
+};
+
+export default Nav;
