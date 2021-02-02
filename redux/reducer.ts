@@ -14,7 +14,6 @@ export const initialState = {
 export const businessReducer = (state = initialState, action) => {
   switch (action.type) {
     case BUSINESS_VISITED:
-      debugger;
       const { id } = action.payload;
       return {
         ...state,
