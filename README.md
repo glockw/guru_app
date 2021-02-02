@@ -62,6 +62,6 @@ y clic en el hipervinculo**
 **Pagina del Detalle**
 <a href="https://ibb.co/HT2zQMb"><img src="https://i.ibb.co/s9PwrDN/Screen-Shot-2021-02-02-at-1-26-06-PM.png" alt="Screen-Shot-2021-02-02-at-1-26-06-PM" ></a>
 
-Todas las ventanas son mobile friendly. 
+Todas las ventanas son mobile friendly.
 
 Gracias!
