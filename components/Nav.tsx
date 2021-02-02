@@ -1,16 +1,24 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetch_more } from "../redux/actions";
 import Filter from "./organisms/Filter";
 
 const Nav = () => {
-  const { total } = useSelector((data) => data);
+  const dispatch = useDispatch();
+  const { total, offset } = useSelector((data) => data);
+  debugger;
+  const moreResults = () => {
+    dispatch(fetch_more);
+  };
 
   return (
     <header>
       <Filter />
       {total > 0 && (
         <div>
-          <span> Total of {total}</span>
-          <button> more </button>
+          <span>
+            Total {offset} of {total}
+          </span>
+          <button onClick={moreResults}> more </button>
         </div>
       )}
 

@@ -2,6 +2,9 @@ import { FETCH_BUSINESS_STARTED, FETCH_BUSINESS_SUCCEEDED } from "./actions";
 export const initialState = {
   total: 0,
   business: [],
+  term: "",
+  location: "",
+  offest: 0,
   isLoading: false,
 };
 export const businessReducer = (state = initialState, action) => {
@@ -12,11 +15,17 @@ export const businessReducer = (state = initialState, action) => {
         isLoading: true,
       };
     case FETCH_BUSINESS_SUCCEEDED:
+      const {
+        payload: { term, location, total, business, offset },
+      } = action;
       return {
         ...state,
         isLoading: false,
-        total: action.payload.total,
-        business: action.payload.business,
+        term: term,
+        location: location,
+        offset: offset,
+        total: total,
+        business: business,
       };
     default: {
       return initialState;
