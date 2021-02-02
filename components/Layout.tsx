@@ -2,12 +2,14 @@ import { faPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import Loading from "./atoms/Loading";
 
 const Layout = ({ children, notHome = false }) => {
   const router = useRouter();
 
   return (
     <>
+      <Loading color="#22bad9" />
       <main>
         {children}
         {notHome && (

@@ -34,6 +34,7 @@ const Businesses = () => {
             top: 5em;
             display: flex;
             flex-wrap: wrap;
+            padding-top: 2em;
             justify-content: center;
           }
 

@@ -5,9 +5,16 @@ import { getBusiness } from "../../lib/api";
 export default function Business({ business }) {
   return (
     <Layout notHome>
-      <BusinessDetail item={business} />
-
-      <style jsx>{``}</style>
+      <div>
+        <BusinessDetail item={business} />
+        <style jsx>
+          {`
+            div {
+              margin: 2em 0;
+            }
+          `}
+        </style>
+      </div>
     </Layout>
   );
 }

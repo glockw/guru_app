@@ -14,7 +14,7 @@ export default function Filter() {
   );
 
   const doSearch = () => {
-    dispatch(fetch_business);
+    dispatch(fetch_business(what, near));
   };
 
   return (
