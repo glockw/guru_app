@@ -1,21 +1,46 @@
 import moment from "moment";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BussinesExtended } from "../../models";
+import { BUSINESS_VISITED } from "../../redux/actions";
 import ImageHolder from "../atoms/ImageHolder";
 import DescriptionDetail from "../molecules/DescriptionDetail";
 import Reviewer from "./Reviewer";
 import Schedule from "./Schedule";
 export default function BusinessDetail({ item }: { item: BussinesExtended }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: BUSINESS_VISITED,
+      payload: {
+        id: item.id,
+      },
+    });
+  }, []);
   const src = item.photos[0];
   const atl = item.name;
 
   const { hours } = item;
 
-  const currentTime = +moment(Date.now()).format("hhmm");
-
-  const isOpen = hours.some(
-    (h) =>
-      h.current && h.start_number <= currentTime && h.end_number > currentTime
-  );
+  const currentTime = +moment(Date.now()).format("HHmm");
+  let isOpen = false;
+  const is_night = hours.find((c) => c.is_overnight && c.current);
+  if (is_night) {
+    isOpen = hours.some(
+      (h) =>
+        h.current &&
+        +h.start_number >= currentTime &&
+        +h.end_number <= currentTime
+    );
+  } else {
+    isOpen = hours.some(
+      (h) =>
+        h.current &&
+        +h.start_number <= currentTime &&
+        +h.end_number > currentTime
+    );
+  }
 
   return (
     <>

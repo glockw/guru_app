@@ -1,8 +1,11 @@
+import { useDispatch } from "react-redux";
 import { useInput } from "../../hooks/useInput";
+import { fetch_business } from "../../redux/actions";
 import SearchButton from "../atoms/SeachButton";
 import InputWide from "../molecules/InputWide";
 
-export default function Filter({ onSearch }) {
+export default function Filter() {
+  const dispatch = useDispatch();
   const { bind: search, value: what } = useInput(
     "plumbers, deliverys, takeout..."
   );
@@ -11,7 +14,7 @@ export default function Filter({ onSearch }) {
   );
 
   const doSearch = () => {
-    onSearch(what, near);
+    dispatch(fetch_business(what, near));
   };
 
   return (

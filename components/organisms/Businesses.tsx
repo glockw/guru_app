@@ -1,19 +1,40 @@
-import { Business } from "../../models";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector } from "react-redux";
 import GridList from "./GridList";
 
-const Businesses = ({ data }: { data: Business[] }) => {
+const Businesses = () => {
+  const { business } = useSelector((data) => data);
   return (
     <>
       <div className="flex-items">
-        <GridList data={data} />
+        {business.length ? (
+          <GridList data={business} />
+        ) : (
+          <div className="flex-column">
+            <img src="img/not_found.jpg" />
+            <span>
+              Place a Search...
+              <FontAwesomeIcon icon={faSearch} />
+            </span>
+          </div>
+        )}
       </div>
+
       <style jsx>
         {`
+          .flex-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10em;
+          }
           .flex-items {
             position: relative;
             top: 5em;
             display: flex;
             flex-wrap: wrap;
+            padding-top: 2em;
             justify-content: center;
           }
 
