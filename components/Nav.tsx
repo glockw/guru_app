@@ -17,6 +17,7 @@ const Nav = () => {
           <span>
             Total {offset} of {total}
           </span>
+
           <button onClick={moreResults}> more </button>
         </div>
       )}
@@ -24,6 +25,9 @@ const Nav = () => {
       <style jsx>{`
         div {
           padding: 1em;
+        }
+        button {
+          margin-left: 1em;
         }
         header {
           display: flex;
